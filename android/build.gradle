@@ -3,6 +3,22 @@ allprojects {
         google()
         mavenCentral()
     }
+    // flutter_inappwebview LibraryVariantBuilderImpl.
+    // Namespace not specified Errorの解消
+    // https://stackoverflow.com/questions/78744324/could-not-create-an-instance-of-type-com-android-build-api-variant-impl-libraryv
+    // Add this part -------------->
+    subprojects {
+        afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+                }
+            }
+        }
+    }
+    // until here
 }
 
 rootProject.buildDir = "../build"
