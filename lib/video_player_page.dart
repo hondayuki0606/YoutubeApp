@@ -4,13 +4,13 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class VideoPlayerPage extends StatefulWidget {
   final String videoId;
 
-  VideoPlayerPage({required this.videoId});
+  const VideoPlayerPage({super.key, required this.videoId});
 
   @override
-  _VideoPlayerPageState createState() => _VideoPlayerPageState();
+  VideoPlayerPageState createState() => VideoPlayerPageState();
 }
 
-class _VideoPlayerPageState extends State<VideoPlayerPage> {
+class VideoPlayerPageState extends State<VideoPlayerPage> {
   late YoutubePlayerController _controller;
 
   @override
@@ -21,6 +21,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       flags: YoutubePlayerFlags(
         autoPlay: true,
         mute: false,
+        isLive: false
       ),
     );
   }
