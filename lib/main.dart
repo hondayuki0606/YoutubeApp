@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import 'Video.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,24 +19,26 @@ class MyApp extends StatelessWidget {
 
 
 class VideoThumbnailList extends StatelessWidget {
-  final List<Map<String, String>> videos = [
-    {
-      'thumbnail': 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
-      'videoUrl': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    },
-    {
-      'thumbnail': 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
-      'videoUrl': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    },
-    {
-      'thumbnail': 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
-      'videoUrl': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    },
-    {
-      'thumbnail': 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
-      'videoUrl': 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-    },
+  final List<Video> videos = [
+    Video(
+      thumbnail: 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
+      videoId: 'dQw4w9WgXcQ',
+    ),
+    Video(
+      thumbnail: 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
+      videoId: 'dQw4w9WgXcQ',
+    ),
+    Video(
+      thumbnail: 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
+      videoId: 'dQw4w9WgXcQ',
+    ),
+    Video(
+      thumbnail: 'https://rollingstone.com.br/media/_versions/2024/02/rick-astley-photo-by-belinda-jiao-getty-images_widelg.jpg',
+      videoId: 'dQw4w9WgXcQ',
+    ),
   ];
+
+  VideoThumbnailList({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +54,8 @@ class VideoThumbnailList extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => VideoPlayerScreen(videoUrl: 'dQw4w9WgXcQ'),
+                  builder: (context) =>
+                      VideoPlayerScreen(videoUrl: videos[index].videoId),
                 ),
               );
             },
@@ -57,7 +63,7 @@ class VideoThumbnailList extends StatelessWidget {
               margin: EdgeInsets.all(10),
               child: Column(
                 children: [
-                  Image.network(videos[index]['thumbnail']!),
+                  Image.network(videos[index].thumbnail),
                   SizedBox(height: 8),
                   Text('動画 ${index + 1}', style: TextStyle(fontSize: 16)),
                 ],
@@ -72,13 +78,14 @@ class VideoThumbnailList extends StatelessWidget {
 
 class VideoPlayerScreen extends StatefulWidget {
   final String videoUrl;
-  VideoPlayerScreen({required this.videoUrl});
+
+  VideoPlayerScreen({super.key, required this.videoUrl});
 
   @override
-  _VideoPlayerScreenState createState() => _VideoPlayerScreenState();
+  VideoPlayerScreenState createState() => VideoPlayerScreenState();
 }
 
-class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
+class VideoPlayerScreenState extends State<VideoPlayerScreen> {
   late YoutubePlayerController _controller;
 
   @override
