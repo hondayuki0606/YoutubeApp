@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_app/src/theme/text_styles.dart';
 import 'package:youtube_app/video_player_screen.dart';
 import 'Video.dart';
-
-const TextStyle videoTextStyle = TextStyle(fontSize: 16);
 
 class VideoThumbnailItem extends StatelessWidget {
   final Video video;
