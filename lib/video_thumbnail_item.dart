@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_app/src/models/video_model.dart';
 import 'package:youtube_app/src/theme/text_styles.dart';
 import 'package:youtube_app/video_player_screen.dart';
-import 'Video.dart';
 
 class VideoThumbnailItem extends StatelessWidget {
   final Video video;

@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,  // アプリの主要な色
+        primarySwatch: Colors.blue, // アプリの主要な色
       ),
       home: TabScreen(),
     );
@@ -20,7 +20,6 @@ class MyApp extends StatelessWidget {
 }
 
 class TabScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -38,9 +37,9 @@ class TabScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Center(child: VideoThumbnailList(type: 'home')),  // ホームタブ
-            Center(child: VideoThumbnailList(type: 'search')),  // 検索タブ
-            Center(child: VideoThumbnailList(type: 'settings')),  // 設定タブ
+            Center(child: VideoThumbnailList(type: TabType.home)),
+            Center(child: VideoThumbnailList(type: TabType.search)),
+            Center(child: VideoThumbnailList(type: TabType.settings)),
           ],
         ),
       ),
